@@ -4,6 +4,7 @@ import yaml
 import math
 import tqdm
 import time
+import os
 
 class DiffusePipeline(object):
     
@@ -18,7 +19,8 @@ class DiffusePipeline(object):
         self.opt=opt
         
         # Load parameters from YAML file
-        with open('config/diffuser_params.yaml', 'r') as yaml_file:
+        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'diffuser_params.yaml')
+        with open(config_path, 'r') as yaml_file:
             diffuser_params = yaml.safe_load(yaml_file)
 
         # Select diffusion'parameters based on diffuser_name
@@ -109,4 +111,3 @@ class DiffusePipeline(object):
         t_eval = t_sum/(bacth_idx-1)
         print('The average generation time of a batch motion (bs=%d) is %f seconds'%(batch_size,t_eval))
         return all_output, t_eval
-
