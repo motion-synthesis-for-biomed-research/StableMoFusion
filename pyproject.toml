@@ -1,0 +1,22 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "stablemofusion"
+version = "0.1.0"
+description = "StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework"
+authors = ["Motion Synthesis for Biomedical Research Team"]
+packages = [
+    {include = "stablemofusion"},
+]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+torch = ">=2.6.0,<3.0.0"
+torchvision = ">=0.22.1,<1.0.0"
+transformers = ">=4.43,<5.0"
+diffusers = ">=0.33.1,<0.34.0"
+numpy = ">=2.2.3,<3.0.0"
+einops = "*"
+clip = {git = "https://github.com/openai/CLIP.git"}

@@ -1,0 +1,1 @@
+# StableMoFusion package
