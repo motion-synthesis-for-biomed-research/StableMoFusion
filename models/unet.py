@@ -493,7 +493,8 @@ class T2MUnet(nn.Module):
             nhead=text_num_heads,
             dim_feedforward=text_ff_size,
             dropout=dropout,
-            activation=activation)
+            activation=activation,
+            batch_first=True)
         self.textTransEncoder = nn.TransformerEncoder(
             textTransEncoderLayer,
             num_layers=num_text_layers)
@@ -524,10 +525,12 @@ class T2MUnet(nn.Module):
             x = self.clip_model.ln_final(x).type(self.clip_model.dtype) #[len, batch_size, 512]
 
         x = self.embed_text(x) #[len, batch_size, 256]
+        # L, B, D -> B, L, D for batch_first transformer
+        x = x.permute(1, 0, 2)
         x = self.textTransEncoder(x)
         x = self.text_ln(x)
-        # T, B, D -> B, T, D
-        xf_out = x.permute(1, 0, 2)
+        # Already in B, T, D format
+        xf_out = x
         return xf_out
     
     def load_and_freeze_clip(self, clip_version):
