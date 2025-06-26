@@ -535,7 +535,7 @@ class T2MUnet(nn.Module):
     
     def load_and_freeze_clip(self, clip_version):
         clip_model, _ = clip.load(  # clip_model.dtype=float32
-            clip_version, device='cpu',
+            clip_version, device='cuda' if torch.cuda.is_available() else 'cpu',
             jit=False)  # Must set jit=False for training
 
         # Freeze CLIP weights
