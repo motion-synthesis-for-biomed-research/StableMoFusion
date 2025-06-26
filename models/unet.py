@@ -524,7 +524,7 @@ class T2MUnet(nn.Module):
             x = self.clip_model.transformer(x)
             x = self.clip_model.ln_final(x).type(self.clip_model.dtype) #[len, batch_size, 512]
 
-        x = self.embed_text(x) #[len, batch_size, 256]
+        x = self.embed_text(x.float()) #[len, batch_size, 256] - convert to float32 for compatibility
         # L, B, D -> B, L, D for batch_first transformer
         x = x.permute(1, 0, 2)
         x = self.textTransEncoder(x)
