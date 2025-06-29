@@ -20,20 +20,23 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-torch = ">=1.10.0"
-torchvision = ">=0.11.0"
-transformers = ">=4.0.0"
-diffusers = ">=0.10.0"
-accelerate = ">=0.12.0"
-numpy = "*"
-scipy = "*"
+python = ">=3.12,<4.0"
+torch = ">=2.6.0,<3.0.0"
+torchvision = ">=0.22.1,<1.0.0"
+transformers = ">=4.43,<5.0"
+diffusers = ">=0.33.1,<0.34.0"
+numpy = ">=2.2.3,<3.0.0"
+scipy = ">=1.15.2,<2.0.0"
 einops = "*"
-spacy = "*"
-matplotlib = ">=3.3.1"
+matplotlib = ">=3.10.0,<4.0.0"
 opencv-python = "*"
 tqdm = "*"
 clip = {git = "https://github.com/openai/CLIP.git"}
 
+# Optional dependencies that might not be needed by pipeline
+spacy = {optional = true}
+accelerate = {optional = true}
+
 [tool.poetry.extras]
-full = ["panda3d", "tensorboard", "smplx", "gradio"]
+full = ["panda3d", "tensorboard", "smplx", "gradio", "spacy", "accelerate"]
+training = ["spacy", "accelerate"]
