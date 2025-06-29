@@ -9,6 +9,15 @@ description = "StableMoFusion: Towards Robust and Efficient Diffusion-based Moti
 authors = ["Motion Synthesis for Biomedical Research Team"]
 license = "MIT"
 readme = "README.md"
+packages = [
+    {include = "models"},
+    {include = "datasets"},
+    {include = "eval"},
+    {include = "motion_loader"},
+    {include = "options"},
+    {include = "trainers"},
+    {include = "utils"},
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
