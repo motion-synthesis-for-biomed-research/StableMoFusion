@@ -1,9 +1,10 @@
 
 
 from .unet import T2MUnet
+from .gaussian_diffusion import DiffusePipeline
 
 
-__all__ = ['T2MUnet']
+__all__ = ['T2MUnet', 'DiffusePipeline']
 
 def build_models(opt):
     print('\nInitializing model ...' )
