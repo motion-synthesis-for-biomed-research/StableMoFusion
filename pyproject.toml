@@ -24,7 +24,7 @@ spacy = "*"
 matplotlib = ">=3.3.1"
 opencv-python = "*"
 tqdm = "*"
-clip-by-openai = {git = "https://github.com/openai/CLIP.git"}
+clip = {git = "https://github.com/openai/CLIP.git"}
 
 [tool.poetry.extras]
 full = ["panda3d", "tensorboard", "smplx", "gradio"]
