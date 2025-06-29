@@ -8,13 +8,7 @@ version = "0.1.0"
 description = "StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework"
 authors = ["Motion Synthesis for Biomedical Research Team"]
 packages = [
-    {include = "models"},
-    {include = "datasets"},
-    {include = "eval"},
-    {include = "motion_loader"},
-    {include = "options"},
-    {include = "trainers"},
-    {include = "utils"},
+    {include = "stablemofusion"},
 ]
 
 [tool.poetry.dependencies]
